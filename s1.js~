@@ -1,0 +1,17 @@
+var work =function(){
+  
+  console.log("working hard!");
+};
+
+var dowork = function(f){
+ console.log("work started");
+ try{
+  
+    f();
+ }
+ catch(ex){
+   console.log(ex);
+ }
+ console.log("work ended")
+ };
+dowork(work);

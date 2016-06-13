@@ -1,0 +1,31 @@
+(function() {
+
+  var app = angular.module("githubViewer");
+
+  var MainController = function($scope, $interval, $location) {
+
+    var decCount = function() {
+      $scope.countDown -= 1;
+      if ($scope.countDown < 1)
+        $scope.search($scope.username);
+    };
+
+    var countDownInterval = null;
+    var startCountDown = function() {
+      countDownInterval = $interval(decCount, 1000, $scope.countDown);
+    };
+
+    $scope.search = function(username) {
+      if (countDownInterval) {
+        $interval.cancel(countDownInterval);
+        $scope.countDown = null;
+      }
+      $location.path("/user/"+ username);
+    };
+    
+    $scope.countDown = 5;
+    $scope.username = "angular";
+    startCountDown();
+  };
+  app.controller("MainController", MainController);
+}());

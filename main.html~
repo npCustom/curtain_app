@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer">
+
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.0-rc.2/angular.js" data-semver="1.4.0-rc.2"></script>
+    <script data-require="angular-route@*" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular-route.js"></script>
+    <script src=app.js></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
+    <script src="RepoController.js"></script>
+    <script src="github.js"></script>
+  </head>
+<body>
+<div>
+  {{countDown}}
+  <form name="searchUser">
+    <input type="search" placeholder="enter name to search" ng-model="username" />
+    <input type="button" value="search" ng-click="search(username)" />
+  </form>
+ 
+</div>
+</body>
+</html>

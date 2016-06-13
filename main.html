@@ -1,0 +1,68 @@
+  <div>
+   {{error}}
+    <input type="search" placeholder="enter name to search" ng-model="keyword" />
+<!--     <input type="button" value="search" ng-click="search(keyword)" />
+ -->  
+  </div>
+
+    <!--   ********* search ********** -->
+
+<label ng-repeat="clr in color_filter">
+   <input type="checkbox" checklist-model="checked.color" checklist-value="clr"> {{clr}} </input>
+</label>
+
+{{checked.color | json}}
+
+<div>
+    <select ng-model="repoSortOrder">
+    <option value="+price">Price : Low to high </option>
+    <option value="-price">Price : high to low </option>
+  </select>
+</div>
+
+
+   <!--   ********* product image ********** -->
+<div class="product_image">
+  <img ng-src="{{p_image_url}}" class="btn btn-default" data-toggle="modal" data-target="#myModal" alt="" height="360" width="360">
+</div>
+
+<div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <img ng-src="{{p_image_url}}" alt="" height="360" width="360">
+        </div>
+      
+        <div class="modal-body">
+          <p> {{ p_image.url }} </p>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+   <!--   ********* display images ********** -->
+
+      
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="hovereffect"  ng-repeat="cur in curtains | orderBy:repoSortOrder | filter: keyword">
+        {{cur.id}}
+        <img class="img-responsive" ng-click="clicked(cur.productImage)" ng-src="{{cur.displayImage}}" alt="" width="150" height="150">
+            <div class="overlay">
+                <h2>Add to samples</h2>
+                <p class="icon-links">
+                    <a href="#">
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                </p>
+            </div>
+        {{cur.price}}
+    </div>
+  </div> 
+    
+
